@@ -3,16 +3,18 @@ echo "# gsrstudy"
 VsCode launch.json 구성. 
 ==================================
 
-  {
-            "type": "node",
-            "request": "launch",
-            "name": "프로그램 시작",
-            "program": "${file}",
-            "cwd":"${workspaceFolder}"
+  {  
+            "type": "node",  
+            "request": "launch",  
+            "name": "프로그램 시작",  
+            "program": "${file}",  
+            "cwd":"${workspaceFolder}"   
         }
 
 =====================================
 참고사이트 
+
+https://khai01.blog.me/221355780296
 
 http://nerv2000.tistory.com/105
 
