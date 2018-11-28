@@ -1,6 +1,6 @@
 echo "# gsrstudy" 
 
-###  VsCode launch.json 구성. 
+* ###  VsCode launch.json 구성. 
 
   {  
             "type": "node",  
