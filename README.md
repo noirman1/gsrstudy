@@ -25,8 +25,16 @@ echo "# gsrstudy"
         }          
     ]  
 }  
-  
-=====================================  
+
+------------------------------------------------------------------------------------------------
+
+node.js study ch01~02  
+
+1. 
+
+
+
+------------------------------------------------------------------------------------------------
 
 * ### 참고사이트 
 
@@ -39,7 +47,6 @@ http://khmirage.tistory.com/579       Vscode 디버깅설정 2
 https://code.visualstudio.com/docs/nodejs/nodejs-debugging    VsCode 도움말
 
 
-***
 https://sergeswin.com/1013  마크다운언어 참고1
 
 https://blog.kalkin7.com/2014/02/05/wordpress-markdown-quick-reference-for-koreans/   마크다운언어 참고 2
