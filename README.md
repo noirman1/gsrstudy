@@ -15,7 +15,7 @@ echo "# gsrstudy"
             "name": "프로그램 시작",  
             "program": "${file}",  
             "console": "integratedTerminal",
-            "cwd":"${workspaceRoot}"  
+            "cwd":"${workspaceFolder}"  
         },  
         {  
             "type": "node",  
@@ -28,7 +28,7 @@ echo "# gsrstudy"
 
 ------------------------------------------------------------------------------------------------
 
-* express server 
+* express-generator  
 
 1. npm install express-generator -g
 2. express [프로젝트 디렉토리명]
