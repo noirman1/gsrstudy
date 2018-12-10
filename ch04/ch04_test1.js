@@ -9,5 +9,6 @@ var param = querystring.parse(curURL.query);
 console.log("query : "+param.query);
 console.log("요청파라미터 : "+querystring.stringify(param));
 
+querystring.parse(cur)
 //console.log(curStr);
 //console.dir(curURL);
