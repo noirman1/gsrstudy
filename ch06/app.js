@@ -16,9 +16,9 @@ var app = express();
 
 app.set('port', process.env.PORT || 3000);
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.use('/public', static(path.join(__dirname, 'public')));
  
@@ -31,21 +31,20 @@ app.use(expressSession({
 }));
 
 var MongoClient = require('mongodb').MongoClient;
-
-
 var database;
 
 function connectDB() {
 
 	var databaseUrl = 'mongodb://localhost:27017/local';
+	//var databaseUrl = 'mongodb://localhost';
 
-	MongoClient.connect(databaseUrl, function(err, db) {
+	MongoClient.connect(databaseUrl,{ useNewUrlParser: true }, function(err, db) {
 		if (err) throw err;
 		
 		console.log('데이터베이스에 연결되었습니다. : ' + databaseUrl);
 		
 
-		database = db;
+		database = db.db('local');
 	});
 }
 
@@ -67,14 +66,11 @@ router.route('/process/login').post(function(req, res) {
 			
 			if (docs) {
 				console.dir(docs);
-
-
-				var username = docs[0].name;
-				
+							
 				res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
 				res.write('<h1>로그인 성공</h1>');
 				res.write('<div><p>사용자 아이디 : ' + paramId + '</p></div>');
-				res.write('<div><p>사용자 이름 : ' + username + '</p></div>');
+				res.write('<div><p>사용자 이름 : ' + paramPassword + '</p></div>');
 				res.write("<br><br><a href='/public/login.html'>다시 로그인하기</a>");
 				res.end();
 			
@@ -100,13 +96,11 @@ app.use('/', router);
 
 
 var authUser = function(database, id, password, callback) {
-	console.log('authUser 호출됨 : ' + id + ', ' + password);
-	
+	console.log('authUser 호출됨 : ' + id + ', ' + password);	
    
 	var users = database.collection('users');
-
    
-	users.find({"id":id, "password":password}).toArray(function(err, docs) {
+	users.find({}).toArray(function(err, docs) {
 		if (err) { 
 			callback(err, null);
 			return;
@@ -125,7 +119,7 @@ var authUser = function(database, id, password, callback) {
 
 var errorHandler = expressErrorHandler({
  static: {
-   '404': './public/404.html'
+   '404': 'e:\\study\\gsr\\gsrstudy\\public\\404.html'
  }
 });
 
