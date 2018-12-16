@@ -28,6 +28,7 @@
     "http": "0.0.0",
     "moment": "^2.22.2",
     "mongodb": "^3.1.10",
+    "mongoose": "^5.4.0",
     "passport": "^0.4.0",
     "path": "^0.12.7",
     "serve-static": "^1.13.2",
