@@ -119,7 +119,7 @@ var authUser = function(database, id, password, callback) {
 
 var errorHandler = expressErrorHandler({
  static: {
-   '404': 'e:\\study\\gsr\\gsrstudy\\public\\404.html'
+   '404': './ch06/public/404.html'
  }
 });
 
