@@ -1,7 +1,7 @@
 var http = require('http');
 
 var opts = {
-    host : 'www.afreecatv.com',
+    host : 'http://afreecatv.com/azuan2001',
     port : 80,
     method: 'POST',
     path : '/',
