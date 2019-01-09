@@ -1,3 +1,7 @@
-var printUser = require('./user7').printUser;
+//var printUser = require('./user7').printUser;
 
-printUser();
+//printUser();
+
+var printUser = require('./user7');
+
+printUser.printUser();
