@@ -14,12 +14,11 @@ Schema.createSchema = function(mongoose){
         created_at: {type:Date, index:{unique:'false'}, 'default':Date.now()},
         updated_at: {type:Date, index:{unique:'false'}, 'default':Date.now()}
     });
-
     console.log('UserSchema 정의함.');
 
     UserSchema
-    .virtural('password')
-    .set(function(password){
+        .virtual('password')
+        .set(function(password){
         this.salt = this.makeSalt();
         this.hashed_password = this.encryptPassword(password);
         console.log('virtual password 저장됨 :' + this.hashed_password);        
@@ -33,7 +32,7 @@ Schema.createSchema = function(mongoose){
         }
     });
 
-    UserSchema.methos('makeSalt',function(){
+    UserSchema.method('makeSalt',function(){
         return Math.round((new Date().valueOf() * Math.random()))+ '';
     });
 
