@@ -28,7 +28,7 @@ Schema.createSchema = function(mongoose){
     UserSchema.method('encryptPassword',function(plainText, inSalt){
         if(inSalt){
             return crypto.createHmac('sha1',inSalt).update(plainText).digest('hex');
-        }esle{
+        }else{
             return crypto.createHmac('sha1',this.salt).update(plainText).digest('hex');
         }
     });
