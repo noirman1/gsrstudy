@@ -5,7 +5,7 @@ var Schema = {};
 Schema.createSchema = function(mongoose){
     console.log('createschema 호출됨.');
     
-    UserSchema = mongoose.Schema({
+    var UserSchema = mongoose.Schema({
         id: {type:String, require:true, unique:true, 'default':''},
         hashed_password : {type:String, require:true, unique:true, 'default':''},
         sale: {type:String, require:true},
@@ -55,6 +55,8 @@ Schema.createSchema = function(mongoose){
     UserSchema.static('findAll', function(callback){
         return this.find({},callback);
     });
+
+    return UserSchema;
 }
 
 module.exports =Schema;
