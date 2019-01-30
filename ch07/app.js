@@ -42,7 +42,7 @@ function connectDB() {
 	
 	mongoose.Promise = global.Promise;  	
 	/** { useNewUrlParser: true }*/
-	mongoose.connect(databaseUrl, { useNewUrlParser: true });
+	mongoose.connect(databaseUrl, { useNewUrlParser: true, useCreateIndex :  true });
 	database = mongoose.connection;
 
 	database.on('open', function () {
@@ -72,7 +72,7 @@ function createUserSchema(database){
 var router = express.Router();
 
 router.route('/process/login').post(user.login);
-router.route('/process/adduser').post(user.login);
+router.route('/process/adduser').post(user.adduser);
 router.route('/process/listuser').post(user.listuser);
 
 app.use('/', router);

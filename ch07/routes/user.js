@@ -2,7 +2,7 @@
 
 
 var login = function(req, res){
-    console.logf('/process/login 라우팅 함수 호출됨.');
+    console.log('/process/login 라우팅 함수 호출됨.');
 
     var paramId = req.body.id || req.query.id;
     var paramPassword = req.body.password || req.query.password;    
@@ -161,7 +161,7 @@ var authUser = function(db, id, password, callback) {
 		if (results.length > 0) {
 			console.log('아이디와 일치하는 사용자 찾음.');
 			
-			var user = new UserModel({id:id});
+			var user = new db.UserModel({id:id});
 			var authenticated = user.authenticate(password, results[0]._doc.salt, results[0]._doc.hashed_password);
 			if (authenticated) {
 				console.log('비밀번호 일치함');
