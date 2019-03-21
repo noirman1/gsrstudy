@@ -57,6 +57,7 @@ function connectDB() {
         console.log('연결이 끊어졌습니다. 5초 후 재연결합니다.');
         setInterval(connectDB, 5000);
 	});
+	
 	database.on('error', console.error.bind(console, 'mongoose connection error.'));
 
 	app.set('database',database);

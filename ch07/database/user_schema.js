@@ -6,19 +6,19 @@ Schema.createSchema = function(mongoose){
     console.log('createschema 호출됨.');
     
     var UserSchema = mongoose.Schema({
-        id: {type:String, require:true, unique:true, 'default':''},
-        hashed_password : {type:String, require:true, unique:true, 'default':''},
-        sale: {type:String, require:true},
-        name: {type:String, index:'hashed', 'default':''},
-        age: {type:Number, 'default':-1},
-        created_at: {type:Date, index:{unique:'false'}, 'default':Date.now()},
-        updated_at: {type:Date, index:{unique:'false'}, 'default':Date.now()}
+        id : {type:String, required:true, unique:true, 'default':''},
+        hashed_password : {type:String, required:true, 'default':''},
+        salt : {type:String, requird:true},
+        name : {type:String, index:'hashed', 'default':''},
+        age : {type:Number, 'default':-1},
+        created_at : {type:Date, index:{unique:'false'}, 'default':Date.now()},
+        updated_at : {type:Date, index:{unique:'false'}, 'default':Date.now()}
     });
     console.log('UserSchema 정의함.');
 
     UserSchema
         .virtual('password')
-        .set(function(password){
+        .set(function(password) {
         this.salt = this.makeSalt();
         this.hashed_password = this.encryptPassword(password);
         console.log('virtual password 저장됨 :' + this.hashed_password);        
@@ -32,12 +32,12 @@ Schema.createSchema = function(mongoose){
         }
     });
 
-    UserSchema.method('makeSalt',function(){
-        return Math.round((new Date().valueOf() * Math.random()))+ '';
+    UserSchema.method('makeSalt',function() {
+        return Math.round((new Date().valueOf() * Math.random())) + '';
     });
 
-    UserSchema.method('authenticate', function(plainText,inSalt,hashed_password){
-        if(inSalt){
+    UserSchema.method('authenticate', function(plainText, inSalt, hashed_password) {
+        if (inSalt) {
             console.log('authenticate 호출됨.');
             return this.encryptPassword(plainText, inSalt) ===
             hashed_password;
@@ -48,7 +48,7 @@ Schema.createSchema = function(mongoose){
     });
 
     UserSchema.static('findById', function(id, callback){
-        return this.find({id:'id'},callback);
+        return this.find({id:id},callback);
     });
 
     UserSchema.static('findAll', function(callback){
